@@ -39,7 +39,7 @@ export const prodLoggerConfig: Options = {
     },
     autoRedact: true,
     redactKeys: ['customerSsn'],
-    requestId: true
+    requestId: true,
   },
 };
 

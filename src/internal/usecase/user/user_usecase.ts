@@ -47,7 +47,7 @@ export interface IUserUseCase {
 }
 
 export class UserUseCase implements IUserUseCase {
-  constructor(private readonly userRepository: IUserRepository) { }
+  constructor(private readonly userRepository: IUserRepository) {}
 
   private readonly logger = createScopedLogger('UserUseCase');
 
@@ -130,11 +130,11 @@ export class UserUseCase implements IUserUseCase {
   async getUsers(
     query: GetUsersQueryEntity,
   ): Promise<PaginatedUsersResponseEntity> {
-    const funcName = "getUsers";
+    const funcName = 'getUsers';
 
     try {
       const result = await this.userRepository.findMany(query);
-      xx
+      xx;
       return {
         data: result.data.map((user) => this.mapToUserResponse(user)),
         meta: {
@@ -145,7 +145,7 @@ export class UserUseCase implements IUserUseCase {
         },
       };
     } catch (error: any) {
-      this.logger.error({ err: error, errMessage: error.message }, funcName)
+      this.logger.error({ err: error, errMessage: error.message }, funcName);
 
       if (error instanceof AppError) throw error;
       throw new InternalServerError(

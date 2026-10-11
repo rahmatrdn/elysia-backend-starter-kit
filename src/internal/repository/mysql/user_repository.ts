@@ -44,7 +44,7 @@ export interface IUserRepository {
 }
 
 export class UserRepository implements IUserRepository {
-  constructor(private readonly interfaceName: string = 'IUserRepository') { }
+  constructor(private readonly interfaceName: string = 'IUserRepository') {}
 
   async create(data: NewUser): Promise<User> {
     const funcName = 'create';
@@ -120,9 +120,9 @@ export class UserRepository implements IUserRepository {
 
       const whereClause = params.search
         ? or(
-          like(users.name, `%${params.search}%`),
-          like(users.email, `%${params.search}%`),
-        )
+            like(users.name, `%${params.search}%`),
+            like(users.email, `%${params.search}%`),
+          )
         : undefined;
 
       const totalResult = await db

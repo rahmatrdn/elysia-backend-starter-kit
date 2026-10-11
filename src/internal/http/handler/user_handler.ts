@@ -17,7 +17,7 @@ import {
   type IUserUseCase,
   UserUseCase,
 } from '@/internal/usecase/user/user_usecase';
-import { useLogger } from 'logixlysia'
+import { useLogger } from 'logixlysia';
 
 const userRepository: IUserRepository = new UserRepository();
 const userUseCase: IUserUseCase = new UserUseCase(userRepository);
@@ -52,10 +52,10 @@ export const userHandler = new Elysia({ prefix: '/internal/users' })
     async ({ query, set }) => {
       const result = await userUseCase.getUsers(query);
 
-      const log = useLogger()
+      const log = useLogger();
 
-      log.mergeContext({ userId: "123qs" })
-      log.error('Fetched user profile')
+      log.mergeContext({ userId: '123qs' });
+      log.error('Fetched user profile');
 
       return jsonResponse({
         set,
