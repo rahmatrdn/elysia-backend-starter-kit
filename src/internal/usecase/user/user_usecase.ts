@@ -47,7 +47,7 @@ export interface IUserUseCase {
 }
 
 export class UserUseCase implements IUserUseCase {
-  constructor(private readonly userRepository: IUserRepository) {}
+  constructor(private readonly userRepository: IUserRepository) { }
 
   private readonly logger = createScopedLogger('UserUseCase');
 
@@ -134,7 +134,7 @@ export class UserUseCase implements IUserUseCase {
 
     try {
       const result = await this.userRepository.findMany(query);
-      xx;
+
       return {
         data: result.data.map((user) => this.mapToUserResponse(user)),
         meta: {
