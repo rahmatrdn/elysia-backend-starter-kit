@@ -92,9 +92,7 @@ export class UserUseCase implements IUserUseCase {
       return this.mapToUserResponse(newUser);
     } catch (error: any) {
       if (error instanceof AppError) throw error;
-      throw new InternalServerError(
-        `Failed to create user: ${error.message || error}`,
-      );
+      throw new InternalServerError();
     }
   }
 
@@ -121,9 +119,7 @@ export class UserUseCase implements IUserUseCase {
       return this.mapToUserResponse(user);
     } catch (error: any) {
       if (error instanceof AppError) throw error;
-      throw new InternalServerError(
-        `Failed to retrieve user: ${error.message || error}`,
-      );
+      throw new InternalServerError();
     }
   }
 
@@ -134,7 +130,7 @@ export class UserUseCase implements IUserUseCase {
 
     try {
       const result = await this.userRepository.findMany(query);
-      xx
+
       return {
         data: result.data.map((user) => this.mapToUserResponse(user)),
         meta: {
@@ -215,9 +211,7 @@ export class UserUseCase implements IUserUseCase {
       return this.mapToUserResponse(updatedUser);
     } catch (error: any) {
       if (error instanceof AppError) throw error;
-      throw new InternalServerError(
-        `Failed to update user: ${error.message || error}`,
-      );
+      throw new InternalServerError();
     }
   }
 
@@ -235,9 +229,7 @@ export class UserUseCase implements IUserUseCase {
       await this.userRepository.delete(id);
     } catch (error: any) {
       if (error instanceof AppError) throw error;
-      throw new InternalServerError(
-        `Failed to delete user: ${error.message || error}`,
-      );
+      throw new InternalServerError();
     }
   }
 }
