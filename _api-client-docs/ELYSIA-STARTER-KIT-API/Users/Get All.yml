@@ -1,0 +1,26 @@
+info:
+  name: Get All
+  type: http
+  seq: 2
+
+http:
+  method: get
+  url: "{{url}}/internal/users?page=1&limit=10&search=john"
+  params:
+    - name: page
+      value: "1"
+      type: query
+    - name: limit
+      value: "10"
+      type: query
+    - name: search
+      value: john
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

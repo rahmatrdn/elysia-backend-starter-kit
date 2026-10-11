@@ -1,0 +1,21 @@
+info:
+  name: Refresh Token
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{url}}/auth/refresh"
+  body:
+    type: json
+    data: |-
+      {
+        "refresh_token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzkxODYwNTEzLCJpYXQiOjE3OTE2ODc3MTN9.psNrPNP-8YQ-3pEXzGkW50HgY_qfX8Oj1i8-ek8EBG0"
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
