@@ -10,15 +10,6 @@ export const errorHandlerPlugin = new Elysia({ name: 'error-handler' }).onError(
     if (error instanceof AppError) {
       // Error 500 / server-side error: sembunyikan detail teknis dari respon client
       if (error.statusCode >= 500) {
-        logger.error(
-          {
-            err: error,
-            details: error.details,
-            statusCode: error.statusCode,
-          },
-          `[Server Error]: ${error.message}`,
-        );
-
         return jsonError({
           set,
           statusCode: 500,
@@ -39,9 +30,9 @@ export const errorHandlerPlugin = new Elysia({ name: 'error-handler' }).onError(
     if (code === 'VALIDATION') {
       const details = error.all
         ? error.all.map((err: any) => ({
-            path: err.path,
-            message: err.schema?.error || err.summary || err.message,
-          }))
+          path: err.path,
+          message: err.schema?.error || err.summary || err.message,
+        }))
         : (error as any).customError || error.message;
 
       return jsonError({

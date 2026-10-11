@@ -134,7 +134,7 @@ export class UserUseCase implements IUserUseCase {
 
     try {
       const result = await this.userRepository.findMany(query);
-
+      xx
       return {
         data: result.data.map((user) => this.mapToUserResponse(user)),
         meta: {
@@ -148,9 +148,7 @@ export class UserUseCase implements IUserUseCase {
       this.logger.error({ err: error, errMessage: error.message }, funcName);
 
       if (error instanceof AppError) throw error;
-      throw new InternalServerError(
-        `Failed to fetch users: ${error.message || error}`,
-      );
+      throw new InternalServerError();
     }
   }
 
