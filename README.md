@@ -14,27 +14,27 @@ A production-ready, high-performance, and type-safe REST API starter kit built w
 
 ## 📑 Table of Contents
 
-- [Overview](#overview)
-- [Tech Stacks](#tech-stacks)
-- [Features](#features)
-- [Project Architecture](#project-architecture)
-- [Prerequisites](#prerequisites)
-- [How to Install (Local Development)](#how-to-install-local-development)
-- [How to Install (Docker)](#how-to-install-docker)
-- [Available Scripts](#available-scripts)
-- [API Endpoints Overview](#api-endpoints-overview)
-- [Environment Variables](#environment-variables)
-- [Contributing & License](#contributing--license)
+- [📖 Overview](#overview)
+- [🛠 Tech Stacks](#tech-stacks)
+- [✨ Features](#features)
+- [📂 Project Architecture](#project-architecture)
+- [📋 Prerequisites](#prerequisites)
+- [🚀 How to Install (Local Development)](#how-to-install-local-development)
+- [🐳 How to Install (Docker)](#how-to-install-docker)
+  - [Option 1: Standalone Docker Container](#option-1-standalone-docker-container)
+  - [Option 2: Docker Compose (App + MySQL Database)](#option-2-docker-compose-app--mysql-database)
+- [📜 Available Scripts](#available-scripts)
+- [📄 Contributing & License](#contributing--license)
 
 ---
 
-## Overview
+## <a id="overview"></a>📖 Overview
 
 This starter kit provides an enterprise-ready foundation for scalable backend services. It combines Bun's blazing-fast execution with ElysiaJS's ergonomic type safety, Drizzle's zero-overhead ORM, and Clean Architecture for clean domain boundary separation and maintainability.
 
 ---
 
-## 🛠 Tech Stacks
+## <a id="tech-stacks"></a>🛠 Tech Stacks
 
 | Category | Technology | Description |
 | :--- | :--- | :--- |
@@ -51,7 +51,7 @@ This starter kit provides an enterprise-ready foundation for scalable backend se
 
 ---
 
-## ✨ Features
+## <a id="features"></a>✨ Features
 
 - **🏛️ Clean Architecture**: Strict separation of concerns divided into Domain Entities, Repositories, Use Cases, Presenters, and HTTP Handlers.
 - **🔐 JWT Authentication & RBAC**:
@@ -75,7 +75,7 @@ This starter kit provides an enterprise-ready foundation for scalable backend se
 
 ---
 
-## 📂 Project Architecture
+## <a id="project-architecture"></a>📂 Project Architecture
 
 ```text
 ├── drizzle/                      # Generated SQL migration files
@@ -110,7 +110,7 @@ This starter kit provides an enterprise-ready foundation for scalable backend se
 
 ---
 
-## 📋 Prerequisites
+## <a id="prerequisites"></a>📋 Prerequisites
 
 Before getting started, make sure you have the following installed:
 
@@ -120,7 +120,7 @@ Before getting started, make sure you have the following installed:
 
 ---
 
-## 🚀 How to Install (Local Development)
+## <a id="how-to-install-local-development"></a>🚀 How to Install (Local Development)
 
 ### 1. Clone the Repository
 
@@ -192,11 +192,11 @@ Your server will spin up workers across your CPU cores. The service is accessibl
 
 ---
 
-## 🐳 How to Install (Docker)
+## <a id="how-to-install-docker"></a>🐳 How to Install (Docker)
 
 You can run the application using either **Docker standalone** or **Docker Compose** (including a MySQL database).
 
-### Option 1: Standalone Docker Container
+### <a id="option-1-standalone-docker-container"></a>Option 1: Standalone Docker Container
 
 #### 1. Build the Docker Image
 
@@ -221,7 +221,7 @@ docker run -d \
 
 ---
 
-### Option 2: Docker Compose (App + MySQL Database)
+### <a id="option-2-docker-compose-app--mysql-database"></a>Option 2: Docker Compose (App + MySQL Database)
 
 You can spin up both the Elysia API and MySQL database together with Docker Compose.
 
@@ -300,7 +300,7 @@ docker compose down
 
 ---
 
-## 📜 Available Scripts
+## <a id="available-scripts"></a>📜 Available Scripts
 
 | Command | Description |
 | :--- | :--- |
@@ -316,7 +316,7 @@ docker compose down
 
 ---
 
-## 📄 Contributing & License
+## <a id="contributing--license"></a>📄 Contributing & License
 
 Contributions, issues, and feature requests are welcome! Feel free to open an issue or pull request.
 
