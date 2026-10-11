@@ -208,19 +208,16 @@ docker build -t elysia-starter-kit-api .
 
 #### 2. Run the Container
 
-Run the image and supply your environment variables:
+Run the image using your `.env` configuration file:
 
 ```bash
 docker run -d \
   --name elysia-backend-app \
   -p 3010:3000 \
-  -e PORT=3000 \
-  -e NODE_ENV=production \
-  -e DATABASE_URL="mysql://root:password@host.docker.internal:3306/elysia_starter_kit_api" \
-  -e JWT_SECRET="your-jwt-access-secret" \
-  -e JWT_REFRESH_SECRET="your-jwt-refresh-secret" \
+  --env-file .env \
   elysia-starter-kit-api
 ```
+
 
 ---
 
@@ -258,15 +255,11 @@ services:
     restart: always
     ports:
       - "3010:3000"
+    env_file:
+      - .env
     environment:
       PORT: 3000
-      APP_NAME: "starter-kit-server-api"
-      NODE_ENV: "production"
       DATABASE_URL: "mysql://root:rootpassword@mysql:3306/elysia_starter_kit_api"
-      JWT_SECRET: "your-super-secret-jwt-access-token-key"
-      JWT_ACCESS_EXP: "1h"
-      JWT_REFRESH_SECRET: "your-super-secret-jwt-refresh-token-key"
-      JWT_REFRESH_EXP: "2d"
     depends_on:
       mysql:
         condition: service_healthy
@@ -320,47 +313,6 @@ docker compose down
 | `bun run db:migrate` | Applies pending Drizzle migrations to the database |
 | `bun run db:all` | Generates migrations with comments and applies them sequentially |
 | `bun run db:push` | Pushes schema changes directly to the database without generating migration files |
-
----
-
-## 🚦 API Endpoints Overview
-
-### Public & Authentication Endpoints
-
-| Method | Endpoint | Description | Auth Required |
-| :--- | :--- | :--- | :---: |
-| `GET` | `/` | Health check endpoint | No |
-| `GET` | `/swagger` | Swagger OpenAPI UI | No |
-| `POST` | `/auth/register` | Register a new user | No |
-| `POST` | `/auth/login` | Authenticate user and obtain tokens | No |
-| `POST` | `/auth/refresh` | Exchange refresh token for new access token | No |
-| `POST` | `/auth/logout` | Invalidate current user session | Bearer JWT |
-| `GET` | `/auth/me` | Fetch authenticated user's profile | Bearer JWT |
-
-### Internal & User Management Endpoints
-
-| Method | Endpoint | Description | Permissions |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/internal/users` | Create a new user | `SUPER_ADMIN`, `ADMIN` |
-| `GET` | `/internal/users` | List paginated users with filters | `SUPER_ADMIN`, `ADMIN` |
-| `GET` | `/internal/users/:id` | Get user details by ID | `SUPER_ADMIN`, `ADMIN`, or Self |
-| `PUT` | `/internal/users/:id` | Update user details by ID | `SUPER_ADMIN`, `ADMIN`, or Self |
-| `DELETE`| `/internal/users/:id` | Delete user account by ID | `SUPER_ADMIN` only |
-
----
-
-## ⚙️ Environment Variables
-
-| Variable | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `APP_NAME` | string | `starter-kit-server-api` | Name of the application |
-| `APP_PORT` / `PORT` | number | `3010` | Port on which the HTTP server listens |
-| `NODE_ENV` | string | `local` | Environment mode (`local`, `development`, `production`) |
-| `DATABASE_URL` | string | - | MySQL connection string (`mysql://user:pass@host:port/db`) |
-| `JWT_SECRET` | string | - | Secret key used to sign and verify JWT Access Tokens |
-| `JWT_ACCESS_EXP` | string | `1h` | Expiration time for Access Tokens |
-| `JWT_REFRESH_SECRET` | string | - | Secret key used to sign and verify JWT Refresh Tokens |
-| `JWT_REFRESH_EXP` | string | `2d` | Expiration time for Refresh Tokens |
 
 ---
 

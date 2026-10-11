@@ -10,7 +10,6 @@
     "db:generate": "drizzle-kit generate && bun scripts/add-sql-comments.ts",
     "db:comment": "bun scripts/add-sql-comments.ts",
     "db:migrate": "drizzle-kit migrate",
-    "db:generate-sql": "bun run db:generate && bun db:comment",
     "db:all": "bun run db:generate && bun run db:migrate",
     "db:push": "drizzle-kit push"
   },
