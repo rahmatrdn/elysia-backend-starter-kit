@@ -49,7 +49,7 @@ export class ConflictError extends AppError {
 }
 
 export class InternalServerError extends AppError {
-  constructor(message: string = 'Internal Server Error', details?: any) {
+  constructor(message: string = 'Something went wrong. Please try again. If the issue persists, contact our support team for assistance.', details?: any) {
     super(message, 500, 'INTERNAL_SERVER_ERROR', details);
   }
 }
