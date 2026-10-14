@@ -1,5 +1,0 @@
-name: LOCAL
-variables:
-  - name: url
-    value: http://localhost:3010
-    description: ""
