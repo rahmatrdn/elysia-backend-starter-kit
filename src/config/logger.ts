@@ -53,17 +53,17 @@ const createTransport = () => {
     return pino.transport({ targets });
   }
 
-  if (logFilePath) {
-    return pino.transport({
-      targets: [
-        {
-          target: 'pino/file',
-          options: { destination: logFilePath, mkdir: true },
-          level: logLevel,
-        },
-      ],
-    });
-  }
+  // if (logFilePath) {x
+  //   return pino.transport({
+  //     targets: [
+  //       {
+  //         target: 'pino/file',
+  //         options: { destination: logFilePath, mkdir: true },
+  //         level: logLevel,
+  //       },
+  //     ],
+  //   });
+  // }
 
   return undefined;
 };
